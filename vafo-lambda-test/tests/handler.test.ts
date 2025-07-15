@@ -21,4 +21,16 @@ describe('textAnalyzer Lambda handler', () => {
       mostCommonLetter: 'l',
     });
   });
+
+  it('returns 400 for invalid JSON input', async () => {
+    const event = {
+      body: '{"text": "hello world"' // Missing closing brace
+    } as any;
+
+    const response = await textAnalyzer(event);
+
+    expect(response.statusCode).toBe(400);
+    const parsed = JSON.parse(response.body);
+    expect(parsed).toEqual({ error: 'Invalid JSON input' });
+  });
 });
