@@ -8,6 +8,8 @@ A serverless AWS Lambda microservice written in TypeScript that analyzes text se
 
 With AWS CLI configured, use the provided `deploy.sh` script to test, build, package, upload, and deploy:
 
+First ensure the S3 buckets already exist and match the names in the .tfvars files (update them if needed)
+
 ```sh
 chmod +x deploy.sh
 ./deploy.sh         # Deploys dev environment
